@@ -39,4 +39,9 @@ function generatePasswd($inputPasswdLength)
     return $str;
 }
 
-echo generatePasswd(16);
+$inputPasswdLength = 16;
+if (isset($argv[1])) $inputPasswdLength = intval($argv[1]);
+elseif (isset($_GET['len'])) $inputPasswdLength = intval($_GET['len']);
+
+$inputPasswdLength = $inputPasswdLength > 1 ? $inputPasswdLength : 16;
+echo generatePasswd($inputPasswdLength);
